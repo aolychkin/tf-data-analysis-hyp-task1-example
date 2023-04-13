@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+from scipy.stats import norm
+from statsmodels.stats.proportion import proportions_ztest
 
 
 chat_id = 1068310526 # Ваш chat ID, не меняйте название переменной
@@ -14,5 +16,4 @@ def solution(x_success: int,
     alpha = 0.07
     z_stat, p_value = proportions_ztest([x_success, y_success], [x_cnt, y_cnt], value=0, alternative='smaller')
     z_crit = np.abs(norm.ppf(alpha))
-    #print(f"Z_stat = {z_stat} \t Z_crit = {z_crit} \t P = {p_value}")
     return z_stat > z_crit
